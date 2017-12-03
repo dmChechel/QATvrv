@@ -13,7 +13,16 @@ import java.util.LinkedList;
 public class Order {
 	//list of all items in the order
 	private LinkedList<OrderItem> orderItems;
-	
+
+	@Override
+	public String toString() {
+		return "Order{" +
+				"\n orderItems=" + orderItems  + "\n" +
+				", shipmentType=" + shipmentType +
+				", date=" + date.getYear() + "." +  date.getMonth() + "." + date.getDay() +
+				'}'+ "\n";
+	}
+
 	//shipment type
 	private ShipmentType shipmentType;
 	

@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<System name="Amazon">
+  <Parameters>
+    <Parameter id="0" name="product1" type="1">
+      <values>
+        <value>BOOKS</value>
+        <value>CLOTHING</value>
+        <value>ELECTRONICS</value>
+        <value>FURNITUREDECOR</value>
+        <value>JEWELRY</value>
+        <value>MUSIC</value>
+        <value>VIDEO</value>
+        <value>WATCHES</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="1" name="product2" type="1">
+      <values>
+        <value>BOOKS</value>
+        <value>CLOTHING</value>
+        <value>ELECTRONICS</value>
+        <value>FURNITUREDECOR</value>
+        <value>JEWELRY</value>
+        <value>MUSIC</value>
+        <value>VIDEO</value>
+        <value>WATCHES</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="2" name="product3" type="1">
+      <values>
+        <value>BOOKS</value>
+        <value>CLOTHING</value>
+        <value>ELECTRONICS</value>
+        <value>FURNITUREDECOR</value>
+        <value>JEWELRY</value>
+        <value>MUSIC</value>
+        <value>VIDEO</value>
+        <value>WATCHES</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="3" name="quantity1" type="1">
+      <values>
+        <value>0</value>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="4" name="quantity2" type="1">
+      <values>
+        <value>0</value>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="5" name="quantity3" type="1">
+      <values>
+        <value>0</value>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="6" name="giftWrap1" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="7" name="giftWrap2" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="8" name="giftWrap3" type="2">
+      <values>
+        <value>true</value>
+        <value>false</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="9" name="shipment" type="1">
+      <values>
+        <value>DOMESTIC</value>
+        <value>DOMESTIC_EXPEDITED</value>
+        <value>INTERNATIONAL</value>
+        <value>INTERNATIONAL_EXPEDITED</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="14" name="date" type="1">
+      <values>
+        <value>2017.12.15</value>
+        <value>2017.12.16</value>
+        <value>2018.01.15</value>
+        <value>2018.01.16</value>
+        <value>2018.03.30</value>
+        <value>2018.03.31</value>
+        <value>2018.09.30</value>
+        <value>2018.10.01</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="15" name="price1" type="1">
+      <values>
+        <value>0</value>
+        <value>0.01</value>
+        <value>0.99</value>
+        <value>1.00</value>
+        <value>6.6</value>
+        <value>6.74</value>
+        <value>9.95</value>
+        <value>10.05</value>
+        <value>12.37</value>
+        <value>12.63</value>
+        <value>13.26</value>
+        <value>13.4</value>
+        <value>24.99</value>
+        <value>25.00</value>
+        <value>48.99</value>
+        <value>49.00</value>
+        <value>200.00</value>
+        <value>200.01</value>
+        <value>800.00</value>
+        <value>800.01</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="16" name="price2" type="1">
+      <values>
+        <value>0</value>
+        <value>0.01</value>
+        <value>0.99</value>
+        <value>1.00</value>
+        <value>6.6</value>
+        <value>6.74</value>
+        <value>9.95</value>
+        <value>10.05</value>
+        <value>12.37</value>
+        <value>12.63</value>
+        <value>13.26</value>
+        <value>13.4</value>
+        <value>24.99</value>
+        <value>25.00</value>
+        <value>48.99</value>
+        <value>49.00</value>
+        <value>200.00</value>
+        <value>200.01</value>
+        <value>800.00</value>
+        <value>800.01</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+    <Parameter id="17" name="price3" type="1">
+      <values>
+        <value>0</value>
+        <value>0.01</value>
+        <value>0.99</value>
+        <value>1.00</value>
+        <value>6.6</value>
+        <value>6.74</value>
+        <value>9.95</value>
+        <value>10.05</value>
+        <value>12.37</value>
+        <value>12.63</value>
+        <value>13.26</value>
+        <value>13.4</value>
+        <value>24.99</value>
+        <value>25.00</value>
+        <value>48.99</value>
+        <value>49.00</value>
+        <value>200.00</value>
+        <value>200.01</value>
+        <value>800.00</value>
+        <value>800.01</value>
+      </values>
+      <basechoices />
+      <invalidValues />
+    </Parameter>
+  </Parameters>
+  <OutputParameters />
+  <Relations />
+  <Constraints />
+  <Testset doi="1">
+    <Testcase TCNo="0">
+      <Value>1</Value>
+      <Value>CLOTHING</Value>
+      <Value>CLOTHING</Value>
+      <Value>CLOTHING</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2017.12.16</Value>
+      <Value>0</Value>
+      <Value>0.01</Value>
+      <Value>0.01</Value>
+    </Testcase>
+    <Testcase TCNo="1">
+      <Value>2</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>2</Value>
+      <Value>2</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL</Value>
+      <Value>2018.01.15</Value>
+      <Value>0.01</Value>
+      <Value>0.99</Value>
+      <Value>0.99</Value>
+    </Testcase>
+    <Testcase TCNo="2">
+      <Value>3</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2018.01.16</Value>
+      <Value>0.99</Value>
+      <Value>1.00</Value>
+      <Value>1.00</Value>
+    </Testcase>
+    <Testcase TCNo="3">
+      <Value>4</Value>
+      <Value>JEWELRY</Value>
+      <Value>JEWELRY</Value>
+      <Value>JEWELRY</Value>
+      <Value>0</Value>
+      <Value>0</Value>
+      <Value>0</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>DOMESTIC</Value>
+      <Value>2018.03.30</Value>
+      <Value>1.00</Value>
+      <Value>6.6</Value>
+      <Value>6.6</Value>
+    </Testcase>
+    <Testcase TCNo="4">
+      <Value>5</Value>
+      <Value>MUSIC</Value>
+      <Value>MUSIC</Value>
+      <Value>MUSIC</Value>
+      <Value>2</Value>
+      <Value>0</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2018.03.31</Value>
+      <Value>6.6</Value>
+      <Value>6.74</Value>
+      <Value>6.74</Value>
+    </Testcase>
+    <Testcase TCNo="5">
+      <Value>6</Value>
+      <Value>VIDEO</Value>
+      <Value>VIDEO</Value>
+      <Value>VIDEO</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2018.09.30</Value>
+      <Value>6.74</Value>
+      <Value>9.95</Value>
+      <Value>9.95</Value>
+    </Testcase>
+    <Testcase TCNo="6">
+      <Value>7</Value>
+      <Value>WATCHES</Value>
+      <Value>WATCHES</Value>
+      <Value>WATCHES</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>0</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2018.10.01</Value>
+      <Value>9.95</Value>
+      <Value>10.05</Value>
+      <Value>10.05</Value>
+    </Testcase>
+    <Testcase TCNo="7">
+      <Value>8</Value>
+      <Value>BOOKS</Value>
+      <Value>BOOKS</Value>
+      <Value>BOOKS</Value>
+      <Value>0</Value>
+      <Value>2</Value>
+      <Value>0</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2017.12.15</Value>
+      <Value>10.05</Value>
+      <Value>12.37</Value>
+      <Value>12.37</Value>
+    </Testcase>
+    <Testcase TCNo="8">
+      <Value>9</Value>
+      <Value>MUSIC</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>INTERNATIONAL</Value>
+      <Value>2017.12.15</Value>
+      <Value>12.37</Value>
+      <Value>12.63</Value>
+      <Value>12.63</Value>
+    </Testcase>
+    <Testcase TCNo="9">
+      <Value>10</Value>
+      <Value>WATCHES</Value>
+      <Value>MUSIC</Value>
+      <Value>JEWELRY</Value>
+      <Value>0</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>INTERNATIONAL</Value>
+      <Value>2018.09.30</Value>
+      <Value>12.63</Value>
+      <Value>13.26</Value>
+      <Value>13.26</Value>
+    </Testcase>
+    <Testcase TCNo="10">
+      <Value>11</Value>
+      <Value>CLOTHING</Value>
+      <Value>JEWELRY</Value>
+      <Value>BOOKS</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL</Value>
+      <Value>2017.12.16</Value>
+      <Value>13.26</Value>
+      <Value>13.4</Value>
+      <Value>13.4</Value>
+    </Testcase>
+    <Testcase TCNo="11">
+      <Value>12</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>ELECTRONICS</Value>
+      <Value>2</Value>
+      <Value>0</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2017.12.15</Value>
+      <Value>13.4</Value>
+      <Value>24.99</Value>
+      <Value>24.99</Value>
+    </Testcase>
+    <Testcase TCNo="12">
+      <Value>13</Value>
+      <Value>VIDEO</Value>
+      <Value>WATCHES</Value>
+      <Value>WATCHES</Value>
+      <Value>3</Value>
+      <Value>2</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>DOMESTIC</Value>
+      <Value>2018.03.31</Value>
+      <Value>24.99</Value>
+      <Value>25.00</Value>
+      <Value>25.00</Value>
+    </Testcase>
+    <Testcase TCNo="13">
+      <Value>14</Value>
+      <Value>CLOTHING</Value>
+      <Value>VIDEO</Value>
+      <Value>BOOKS</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>1</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2017.12.15</Value>
+      <Value>25.00</Value>
+      <Value>48.99</Value>
+      <Value>48.99</Value>
+    </Testcase>
+    <Testcase TCNo="14">
+      <Value>15</Value>
+      <Value>CLOTHING</Value>
+      <Value>BOOKS</Value>
+      <Value>VIDEO</Value>
+      <Value>3</Value>
+      <Value>3</Value>
+      <Value>0</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>false</Value>
+      <Value>INTERNATIONAL</Value>
+      <Value>2018.01.16</Value>
+      <Value>48.99</Value>
+      <Value>49.00</Value>
+      <Value>49.00</Value>
+    </Testcase>
+    <Testcase TCNo="15">
+      <Value>16</Value>
+      <Value>BOOKS</Value>
+      <Value>VIDEO</Value>
+      <Value>WATCHES</Value>
+      <Value>1</Value>
+      <Value>3</Value>
+      <Value>1</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>DOMESTIC</Value>
+      <Value>2018.10.01</Value>
+      <Value>49.00</Value>
+      <Value>200.00</Value>
+      <Value>200.00</Value>
+    </Testcase>
+    <Testcase TCNo="16">
+      <Value>17</Value>
+      <Value>MUSIC</Value>
+      <Value>WATCHES</Value>
+      <Value>MUSIC</Value>
+      <Value>3</Value>
+      <Value>2</Value>
+      <Value>1</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2018.01.15</Value>
+      <Value>200.00</Value>
+      <Value>200.01</Value>
+      <Value>200.01</Value>
+    </Testcase>
+    <Testcase TCNo="17">
+      <Value>18</Value>
+      <Value>FURNITUREDECOR</Value>
+      <Value>JEWELRY</Value>
+      <Value>MUSIC</Value>
+      <Value>2</Value>
+      <Value>3</Value>
+      <Value>2</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2018.10.01</Value>
+      <Value>200.01</Value>
+      <Value>800.00</Value>
+      <Value>800.00</Value>
+    </Testcase>
+    <Testcase TCNo="18">
+      <Value>19</Value>
+      <Value>BOOKS</Value>
+      <Value>BOOKS</Value>
+      <Value>BOOKS</Value>
+      <Value>1</Value>
+      <Value>0</Value>
+      <Value>3</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>false</Value>
+      <Value>DOMESTIC_EXPEDITED</Value>
+      <Value>2017.12.15</Value>
+      <Value>800.00</Value>
+      <Value>800.01</Value>
+      <Value>800.01</Value>
+    </Testcase>
+    <Testcase TCNo="19">
+      <Value>20</Value>
+      <Value>MUSIC</Value>
+      <Value>JEWELRY</Value>
+      <Value>MUSIC</Value>
+      <Value>1</Value>
+      <Value>1</Value>
+      <Value>2</Value>
+      <Value>false</Value>
+      <Value>true</Value>
+      <Value>true</Value>
+      <Value>INTERNATIONAL_EXPEDITED</Value>
+      <Value>2018.01.15</Value>
+      <Value>800.01</Value>
+      <Value>0</Value>
+      <Value>0</Value>
+    </Testcase>
+  </Testset>
+  <Header>
+    <Value />
+    <Value>PRODUCT1</Value>
+    <Value>PRODUCT2</Value>
+    <Value>PRODUCT3</Value>
+    <Value>QUANTITY1</Value>
+    <Value>QUANTITY2</Value>
+    <Value>QUANTITY3</Value>
+    <Value>GIFTWRAP1</Value>
+    <Value>GIFTWRAP2</Value>
+    <Value>GIFTWRAP3</Value>
+    <Value>SHIPMENT</Value>
+    <Value>DATE</Value>
+    <Value>PRICE1</Value>
+    <Value>PRICE2</Value>
+    <Value>PRICE3</Value>
+  </Header>
+  <Stat-Data>
+    <ExecutionTime>0.004</ExecutionTime>
+    <MaxDomainSize>20</MaxDomainSize>
+    <MinDomainSize>2</MinDomainSize>
+    <TotalNoOfCombination>114</TotalNoOfCombination>
+    <TotalNoOfTests>20</TotalNoOfTests>
+    <Algorithm>IPOG</Algorithm>
+  </Stat-Data>
+</System>
+

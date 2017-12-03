@@ -1,12 +1,12 @@
 package deposit;
 
+
+import order.*;
+
 import java.util.Calendar;
 import java.util.Date;
 
-import order.Order;
-import order.OrderItem;
-import order.ProductType;
-import order.ShipmentType;
+
 
 /**
  * Class for calculating total amount deposited
@@ -15,7 +15,7 @@ import order.ShipmentType;
  * @author Dan Tavrov
  *
  */
-public class TotalDeposit {
+public class TotalDeposit   {
 	//the order being sold
 	private Order order;
 	

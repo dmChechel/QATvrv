@@ -78,6 +78,7 @@ public class OrderItem {
 				append("with ").append(
 						(!giftWrap)?("no "):("")
 						).
-						append("giftwrap").toString();		
+						append("giftwrap").
+				        append("\n").toString();
 	}
 }
