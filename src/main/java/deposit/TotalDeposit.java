@@ -28,7 +28,7 @@ public class TotalDeposit   {
 	//dates for referral fees
 	private final Date watchReferralStartDate;
 	private final Date watchReferralEndDate;
-	
+
 	//some constants for watch referral fee
 	private final double WATCH_REFERRAL_LIMIT1 = 200.0;
 	private final double WATCH_REFERRAL_LIMIT2 = 800.0;
@@ -41,7 +41,6 @@ public class TotalDeposit   {
 	
 	//limits for free shipping
 	private final double FREE_SHIPPING_BOOK_LIMIT = 25.0;
-	private final double FREE_SHIPPING_ELECTRONICS_LIMIT = 99.0;
 	private final double FREE_SHIPPING_LIMIT = 49.0;
 	
 	//some constants for jewelry sales
@@ -52,16 +51,16 @@ public class TotalDeposit   {
 		this.order = new Order(order);
 		
 		//set dates
-		calendar.set(2017, 12, 16);
+		calendar.set(2017, Calendar.DECEMBER, 16);
 		jewelrySalesStartDate = calendar.getTime();
 		
-		calendar.set(2018, 3, 30);
+		calendar.set(2018, Calendar.MARCH, 30);
 		jewelrySalesEndDate = calendar.getTime();
 		
-		calendar.set(2018, 1, 16);
+		calendar.set(2018, Calendar.JANUARY, 16);
 		watchReferralStartDate = calendar.getTime();
 		
-		calendar.set(2018, 9, 30);
+		calendar.set(2018, Calendar.SEPTEMBER, 30);
 		watchReferralEndDate = calendar.getTime();
 	}
 	
@@ -96,17 +95,48 @@ public class TotalDeposit   {
 		
 		double totalDeposit = 0.0;
 		double totalWatchPrice = 0.0;
-		
+
+        for (OrderItem orderItem:order.getOrderItems()){
+            if (orderItem.getProductType() == ProductType.WATCHES
+                    &&
+                    order.getDate().after(watchReferralStartDate)
+                    &&
+                    order.getDate().before(watchReferralEndDate)){
+                //since in this date range referral fees for watches depend
+                //on the total price, we first calculate it,
+                //and then we will analyze it
+                totalWatchPrice += orderItem.getTotalPrice();
+            }
+        }
+
 		for (OrderItem orderItem:order.getOrderItems()){
 			if (orderItem.getProductType() == ProductType.WATCHES
 					&&
 				order.getDate().after(watchReferralStartDate)
 					&&
 				order.getDate().before(watchReferralEndDate)){
-				//since in this date range referral fees for watches depend
-				//on the total price, we first calculate it,
-				//and then we will analyze it
-				totalWatchPrice += orderItem.getTotalPrice();
+
+			    double referralFee;
+
+                if (totalWatchPrice <= WATCH_REFERRAL_LIMIT1) {
+                    referralFee = WATCH_REFERRAL_RATE1;
+                }
+                else if (totalWatchPrice <= WATCH_REFERRAL_LIMIT2) {
+                    referralFee = WATCH_REFERRAL_RATE2;
+                }
+                else {
+                    referralFee = WATCH_REFERRAL_RATE3;
+                }
+
+                if (orderItem.getPrice()
+                        * getReferralFeeRate(orderItem.getProductType())
+                        > getReferralFeeMinimum(orderItem.getProductType())){
+                    totalDeposit += orderItem.getTotalPrice() * (1.0 - referralFee);
+                } else {
+                    totalDeposit += orderItem.getTotalPrice()
+                            - (orderItem.getQuantity()
+                            * getReferralFeeMinimum(orderItem.getProductType()));
+                }
 			}
 			else{
 				//first calculate the item price,
@@ -138,7 +168,7 @@ public class TotalDeposit   {
 					}
 				}
 			}
-		
+
 			//add shipment charges
 			if (!freeShipping){
 				//unless the order is eligible for free shipping
@@ -149,55 +179,18 @@ public class TotalDeposit   {
 			
 			//add gift wrap charges
 			if (orderItem.isGiftWrap()){
-				totalDeposit += orderItem.getQuantity()
-						* getGiftWrapRate(orderItem.getProductType());
+                totalDeposit += orderItem.getQuantity()
+                        * getGiftWrapRate(orderItem.getProductType());
 			}
-			
-			//subtract variable closing fee
-			totalDeposit -= orderItem.getQuantity()
-					* getVariableClosingFree(orderItem.getProductType(),
-							order.getShipmentType());
-			
+
+            //subtract variable closing fee
+            totalDeposit -= orderItem.getQuantity()
+                    * getVariableClosingFree(orderItem.getProductType(),
+                    order.getShipmentType());
+
 			//subtract per-item fee
-			if (orderItem.getPrice() >= PER_ITEM_FEE){
+			if (orderItem.getPrice() > PER_ITEM_FEE){
 				totalDeposit -= orderItem.getQuantity() * PER_ITEM_FEE;
-			}
-		}
-		
-		//tackle the problem of referral fees for watches
-		if (totalWatchPrice > 0.0){
-			//if there were some watches in the order,
-			//this means that the date of the order
-			//falls in the specified range, and we
-			//need to calculate appropriate referral fees
-			
-			if (totalWatchPrice <= WATCH_REFERRAL_LIMIT1){
-				//decide, which one to apply---regular or minimum
-				if (totalWatchPrice * WATCH_REFERRAL_RATE1
-						> getReferralFeeMinimum(ProductType.WATCHES)){
-					totalDeposit += totalWatchPrice
-							* (1.0 - WATCH_REFERRAL_RATE1);
-				}
-				else{
-					totalDeposit += totalWatchPrice
-							- getReferralFeeMinimum(ProductType.WATCHES);
-				}
-			}
-			else if (totalWatchPrice <= WATCH_REFERRAL_LIMIT2){
-				totalDeposit +=
-						WATCH_REFERRAL_LIMIT1
-							* (1.0 - WATCH_REFERRAL_RATE1) +
-						(totalWatchPrice - WATCH_REFERRAL_LIMIT1)
-							* (1.0 - WATCH_REFERRAL_RATE2);
-			}
-			else{
-				totalDeposit +=
-						WATCH_REFERRAL_LIMIT1
-							* (1.0 - WATCH_REFERRAL_RATE2) +
-						(totalWatchPrice - WATCH_REFERRAL_LIMIT1)
-							* (1.0 - WATCH_REFERRAL_RATE1) +
-						(totalWatchPrice - WATCH_REFERRAL_LIMIT2)
-							* (1.0 - WATCH_REFERRAL_RATE3);
 			}
 		}
 		
@@ -212,34 +205,37 @@ public class TotalDeposit   {
 	 * free shipping.
 	 */
 	private boolean isEligibleForFreeShipping(){
-		double totalPriceInType = 0.0;
-		
+        if (order.getShipmentType() == ShipmentType.INTERNATIONAL) {
+            return false;
+        }
+        if (order.getShipmentType() == ShipmentType.INTERNATIONAL_EXPEDITED) {
+            return false;
+        }
+
 		for (ProductType productType:ProductType.values()){
-			//calculate the total price in this category
+            double totalPriceInType = 0.0;
+
+            if (productType == ProductType.FURNITUREDECOR) {
+                continue;
+            }
+            //calculate the total price in this category
 			for (OrderItem orderItem:order.getOrderItems()){
 				if (orderItem.getProductType() == productType){
 					totalPriceInType += orderItem.getTotalPrice();
 				}
 			}
-			
+
 			//check the eligibility conditions
 			if (productType == ProductType.BOOKS){
 				if (totalPriceInType > FREE_SHIPPING_BOOK_LIMIT){
 					return true;
 				}
 			}
-			else if (productType == ProductType.ELECTRONICS){
-				if (totalPriceInType > FREE_SHIPPING_ELECTRONICS_LIMIT){
-					return true;
-				}
-			}
-			else{
-				if (totalPriceInType >= FREE_SHIPPING_LIMIT){
-					return true;
-				}
-			}
+			if (totalPriceInType >= FREE_SHIPPING_LIMIT){
+                return true;
+            }
 		}
-		
+
 		return false;
 	}
 	
@@ -293,25 +289,12 @@ public class TotalDeposit   {
 					default:
 						return 0.00;	
 				}
-			case CLOTHING:
-				switch (order.getShipmentType()){
-					case DOMESTIC:
-						return 3.99;
-					case DOMESTIC_EXPEDITED:
-						return 6.99;
-					case INTERNATIONAL:
-						return 16.95;
-					case INTERNATIONAL_EXPEDITED:
-						return 46.50;
-					default:
-						return 0.00;
-				}
 			case MUSIC:
 				switch (order.getShipmentType()){
 					case DOMESTIC:
 						return 3.99;
 					case DOMESTIC_EXPEDITED:
-						return 6.99;
+						return 6.19;
 					case INTERNATIONAL:
 						return 14.95;
 					case INTERNATIONAL_EXPEDITED:
@@ -353,7 +336,7 @@ public class TotalDeposit   {
 			case CLOTHING:
 				return 6.99;
 			case ELECTRONICS:
-				return 10.99;
+				return 11.99;
 			case FURNITUREDECOR:
 				return 24.99;
 			case JEWELRY:

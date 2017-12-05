@@ -1,6 +1,5 @@
-import com.artem.Main;
 import deposit.TotalDeposit;
-import deposit.TotalDepositCorrect;
+import deposit.TotalDepositFixed;
 import order.Order;
 import order.OrderItem;
 import order.ProductType;
@@ -19,7 +18,7 @@ public class TestTotalDeposit {
 	private static final Calendar calendar = Calendar.getInstance();
 	@Test
 	public void test() {
-		calendar.set(2017, 12, 17);
+		calendar.set(2017, Calendar.DECEMBER, 17);
 
 		Order order = new Order();
 		order.addOrderItem(new OrderItem(ProductType.JEWELRY,
@@ -31,12 +30,12 @@ public class TestTotalDeposit {
 		order.setDate(calendar.getTime());
 		order.setShipment(ShipmentType.INTERNATIONAL);
 
-		double totalDeposit = new TotalDepositCorrect(order).getTotalDeposit();
+		double totalDeposit = new TotalDepositFixed(order).getTotalDeposit();
 
 		System.out.println(totalDeposit);
 
 		assertTrue(Math.abs(
-				new TotalDepositCorrect(order).getTotalDeposit()
+				new TotalDepositFixed(order).getTotalDeposit()
 						- 868.32 ) < 1e-10); //true value
 	}
 	@Test

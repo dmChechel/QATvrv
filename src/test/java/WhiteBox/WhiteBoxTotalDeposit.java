@@ -1,7 +1,7 @@
 package WhiteBox;
 
 import deposit.TotalDeposit;
-import deposit.TotalDepositCorrect;
+import deposit.TotalDepositFixed;
 import order.Order;
 import order.OrderItem;
 import order.ProductType;
@@ -12,19 +12,19 @@ import java.util.Calendar;
 
 import static org.junit.Assert.assertTrue;
 
-public class GerTotalDeposit {
+public class WhiteBoxTotalDeposit {
 
     private static final Calendar calendar = Calendar.getInstance();
 
     /*
-   * Тест когда 1 часы стоимостью 15 долларов  в подарочной упаковке
+    * Тест когда 1 часы стоимостью 15 долларов  в подарочной упаковке
     * с международной доставкой
     * Дата 2018.01.17
     * Ожидаемый результат 38.6
    * */
     @Test
     public void Test1() {
-        calendar.set(2018, 01, 17);
+        calendar.set(2018, Calendar.FEBRUARY, 17);
 
         Order order = new Order();
         order.addOrderItem(new OrderItem(ProductType.WATCHES,
@@ -34,7 +34,7 @@ public class GerTotalDeposit {
         double totalDeposit = new TotalDeposit(order).getTotalDeposit();
         System.out.println(totalDeposit);
         assertTrue(Math.abs(
-                new TotalDepositCorrect(order).getTotalDeposit()
+                new TotalDepositFixed(order).getTotalDeposit()
                         - 38.6) < 1e-10); //true value
 
     }
@@ -52,7 +52,7 @@ public class GerTotalDeposit {
    * */
     @Test
     public void Test2() {
-        calendar.set(2018, 02, 27);
+        calendar.set(2018, Calendar.MARCH, 27);
 
         Order order = new Order();
         order.addOrderItem(new OrderItem(ProductType.WATCHES,
@@ -64,12 +64,12 @@ public class GerTotalDeposit {
         order.setDate(calendar.getTime());
         order.setShipment(ShipmentType.DOMESTIC);
         double totalDeposit = new TotalDeposit(order).getTotalDeposit();
-        double Correct = new TotalDepositCorrect(order).getTotalDeposit();
+        double Correct = new TotalDepositFixed(order).getTotalDeposit();
         System.out.println(totalDeposit);
         System.out.println(Correct);
 
         assertTrue(Math.abs(
-                new TotalDepositCorrect(order).getTotalDeposit()
+                new TotalDepositFixed(order).getTotalDeposit()
                         - 371.05) < 1e-10); //true value
     }
 
@@ -85,7 +85,7 @@ public class GerTotalDeposit {
    * */
     @Test
     public void Test3() {
-        calendar.set(2018, 4, 7);
+        calendar.set(2018, Calendar.MAY, 7);
 
         Order order = new Order();
         order.addOrderItem(new OrderItem(ProductType.WATCHES,
@@ -95,12 +95,12 @@ public class GerTotalDeposit {
         order.setDate(calendar.getTime());
         order.setShipment(ShipmentType.DOMESTIC_EXPEDITED);
         double totalDeposit = new TotalDeposit(order).getTotalDeposit();
-        double Correct = new TotalDepositCorrect(order).getTotalDeposit();
+        double Correct = new TotalDepositFixed(order).getTotalDeposit();
         System.out.println(totalDeposit);
         System.out.println(Correct);
 
         assertTrue(Math.abs(
-                new TotalDepositCorrect(order).getTotalDeposit()
+                new TotalDepositFixed(order).getTotalDeposit()
                         - 235.5) < 1e-10); //true value
     }
 
@@ -116,7 +116,7 @@ public class GerTotalDeposit {
    * */
     @Test
     public void Test4() {
-        calendar.set(2018, 8, 30);
+        calendar.set(2018, Calendar.SEPTEMBER, 30);
 
         Order order = new Order();
         order.addOrderItem(new OrderItem(ProductType.WATCHES,
@@ -126,12 +126,12 @@ public class GerTotalDeposit {
         order.setDate(calendar.getTime());
         order.setShipment(ShipmentType.INTERNATIONAL_EXPEDITED);
         double totalDeposit = new TotalDeposit(order).getTotalDeposit();
-        double Correct = new TotalDepositCorrect(order).getTotalDeposit();
+        double Correct = new TotalDepositFixed(order).getTotalDeposit();
         System.out.println(totalDeposit);
         System.out.println(Correct);
 
         assertTrue(Math.abs(
-                new TotalDepositCorrect(order).getTotalDeposit()
+                new TotalDepositFixed(order).getTotalDeposit()
                         - 862.275) < 1e-10); //true value
     }
 
@@ -145,18 +145,18 @@ public class GerTotalDeposit {
    * */
     @Test
     public void Test5() {
-        calendar.set(2018, 8, 30);
+        calendar.set(2018, Calendar.SEPTEMBER, 30);
 
         Order order = new Order();
         order.setDate(calendar.getTime());
         order.setShipment(ShipmentType.INTERNATIONAL_EXPEDITED);
         double totalDeposit = new TotalDeposit(order).getTotalDeposit();
-        double Correct = new TotalDepositCorrect(order).getTotalDeposit();
+        double Correct = new TotalDepositFixed(order).getTotalDeposit();
         System.out.println(totalDeposit);
         System.out.println(Correct);
 
         assertTrue(Math.abs(
-                new TotalDepositCorrect(order).getTotalDeposit()
+                new TotalDepositFixed(order).getTotalDeposit()
                         - 0) < 1e-10); //true value
     }
 
