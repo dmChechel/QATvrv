@@ -176,23 +176,17 @@ public class TotalDepositFixed  {
 
             //add gift wrap charges
             if (orderItem.isGiftWrap()){
-                if (orderItem.getProductType() != ProductType.BOOKS &&
-                        orderItem.getProductType() != ProductType.MUSIC &&
-                        orderItem.getProductType() != ProductType.VIDEO) {
-                    totalDeposit += orderItem.getQuantity()
-                            * getGiftWrapRate(orderItem.getProductType());
-                }
+                totalDeposit += orderItem.getQuantity()
+                        * getGiftWrapRate(orderItem.getProductType());
             }
 
-            if (orderItem.getProductType() != ProductType.MUSIC) {
-                //subtract variable closing fee
-                totalDeposit -= orderItem.getQuantity()
-                        * getVariableClosingFree(orderItem.getProductType(),
-                        order.getShipmentType());
-            }
+            //subtract variable closing fee
+            totalDeposit -= orderItem.getQuantity()
+                    * getVariableClosingFree(orderItem.getProductType(),
+                    order.getShipmentType());
 
             //subtract per-item fee
-            if (orderItem.getPrice() > PER_ITEM_FEE){
+            if (orderItem.getPrice() >= 1){
                 totalDeposit -= orderItem.getQuantity() * PER_ITEM_FEE;
             }
         }
