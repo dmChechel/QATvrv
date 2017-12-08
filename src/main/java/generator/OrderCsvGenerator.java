@@ -18,58 +18,8 @@ public class OrderCsvGenerator {
     private static final String SEPARATOR = ",";
     private static final Calendar calendar = Calendar.getInstance();
 
-    public static LinkedList<Pair<Order, Double>> arrayList = new LinkedList<>();
+    public static LinkedList<Order> arrayList = new LinkedList<>();
 
-    public void generate(String testFile) throws IOException {
-        BufferedReader fileReader = new BufferedReader(new FileReader(new File(testFile)));
-
-        String line = fileReader.readLine();
-
-        while (line != null) {
-            String[] split = line.split(SEPARATOR);
-            Order order = mapLineToOrder(split);
-            TotalDepositFixed totalDeposit = new TotalDepositFixed(order);
-            double totalDeposit1 = totalDeposit.getTotalDeposit();
-            line = fileReader.readLine();
-            arrayList.add(new Pair<>(order, totalDeposit1));
-        }
-
-    }
-
-    ///Products,Products1,quantity,quantity1,GiftWrapCharges,GiftWrapCharges1,Ship,Date,Price,Price1
-    private static Order mapLineToOrder(String[] line) {
-        Order order = new Order();
-        ProductType type = getType(line[0]);
-        ShipmentType ship = getShipmentType(line[1]);
-        String giftWrap = line[2];
-        String quantity = line[3];
-        String price = line[4];
-        String date = line[5];
-        LinkedList<OrderItem> linkedList = new LinkedList<>();
-        linkedList.addAll(createOrderItems(String.valueOf(type),
-                Integer.valueOf(quantity),
-                Boolean.valueOf(giftWrap),
-                Double.valueOf(price)));
-        order.setOrderItems(linkedList);
-        order.setShipment(ship);
-        String[] split = date.trim().split("\\.");
-        int year = Integer.valueOf(split[0]);
-        int month = Integer.valueOf(split[1])-1;
-        int day = Integer.valueOf(split[2]);
-        calendar.set(year,month,day);
-        order.setDate(calendar.getTime());
-        return order;
-    }
-
-    private static LinkedList<OrderItem> createOrderItems(String product, int quantity, boolean giftWrapCharge, double price) {
-        LinkedList<OrderItem> linkedList = new LinkedList<>();
-
-
-        OrderItem orderItem = new OrderItem(getType(product), quantity, price, giftWrapCharge);
-        linkedList.add(orderItem);
-
-        return linkedList;
-    }
 
     private static ProductType getType(String product) {
         switch (product) {
@@ -103,6 +53,65 @@ public class OrderCsvGenerator {
             default:
                 return ShipmentType.INTERNATIONAL_EXPEDITED;
         }
+    }
+
+    public void generate(String testFile) throws IOException {
+        BufferedReader fileReader = new BufferedReader(
+                new FileReader(
+                        new File(testFile)));
+
+        String line = fileReader.readLine();
+
+        while (line != null) {
+            String[] orderStr = line.split(SEPARATOR);
+            Order order = getOrder(orderStr);
+            line = fileReader.readLine();
+            arrayList.add(order);
+        }
+
+    }
+
+    private static Order getOrder(String[] line) {
+        Order order = new Order();
+        LinkedList<OrderItem> linkedList = new LinkedList<>();
+        ProductType type = getType(line[0]);
+        ShipmentType ship = getShipmentType(line[1]);
+
+        String giftWrap = line[2];
+        String quantity = line[3];
+        String date = line[4];
+        String price = line[5];
+
+        linkedList.addAll(createOrderItems(type,
+                Integer.valueOf(quantity),
+                Boolean.valueOf(giftWrap),
+                Double.valueOf(price)));
+
+        order.setOrderItems(linkedList);
+        order.setShipment(ship);
+
+        String[] dateArr = date.trim().split("\\.");
+
+        int year = Integer.valueOf(dateArr[0]);
+        int month = Integer.valueOf(dateArr[1])-1;
+        int day = Integer.valueOf(dateArr[2]);
+
+        calendar.set(year,month,day);
+        order.setDate(calendar.getTime());
+
+        return order;
+    }
+
+    private static LinkedList<OrderItem> createOrderItems(
+            ProductType product,
+            int quantity,
+            boolean giftWrapCharge,
+            double price) {
+        LinkedList<OrderItem> linkedList = new LinkedList<>();
+        OrderItem orderItem = new OrderItem(product, quantity, price, giftWrapCharge);
+        linkedList.add(orderItem);
+
+        return linkedList;
     }
 }
 

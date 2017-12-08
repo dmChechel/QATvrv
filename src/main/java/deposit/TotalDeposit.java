@@ -215,7 +215,9 @@ public class TotalDeposit {
         double totalPriceInType = 0.0;
 
         for (ProductType productType:ProductType.values()){
-            //calculate the total price in this category
+            //calculate the t
+            //
+            // otal price in this category
             for (OrderItem orderItem:order.getOrderItems()){
                 if (orderItem.getProductType() == productType){
                     totalPriceInType += orderItem.getTotalPrice();
